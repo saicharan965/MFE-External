@@ -1,0 +1,28 @@
+{
+  "projectType": "library",
+  "root": "libs/feature-add-flight",
+  "sourceRoot": "libs/feature-add-flight/src",
+  "prefix": "ariqt-external",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/feature-add-flight"
+      ],
+      "options": {
+        "jestConfig": "libs/feature-add-flight/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/feature-add-flight/src/**/*.ts",
+          "libs/feature-add-flight/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

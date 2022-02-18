@@ -1,0 +1,115 @@
+{
+  "projectType": "application",
+  "root": "apps/add-flights",
+  "sourceRoot": "apps/add-flights/src",
+  "prefix": "ariqt-external",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/add-flights",
+        "index": "apps/add-flights/src/index.html",
+        "main": "apps/add-flights/src/main.ts",
+        "polyfills": "apps/add-flights/src/polyfills.ts",
+        "tsConfig": "apps/add-flights/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/add-flights/src/favicon.ico",
+          "apps/add-flights/src/assets"
+        ],
+        "styles": [
+          "apps/add-flights/src/styles.scss",
+          "node_modules/bootstrap/dist/css/bootstrap.min.css"
+        ],
+        "scripts": [
+          "node_modules/bootstrap/dist/js/bootstrap.min.js"
+        ],
+        "customWebpackConfig": {
+          "path": "apps/add-flights/webpack.config.js"
+        },
+        "commonChunk": false
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/add-flights/src/environments/environment.ts",
+              "with": "apps/add-flights/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/add-flights/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:webpack-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "add-flights:build:production"
+        },
+        "development": {
+          "browserTarget": "add-flights:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 8080,
+        "publicHost": "http://localhost:8080"
+      }
+    },
+    "extract-i18n": {
+      "executor": "ngx-build-plus:extract-i18n",
+      "options": {
+        "browserTarget": "add-flights:build",
+        "extraWebpackConfig": "apps/add-flights/webpack.config.js"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/add-flights/src/**/*.ts",
+          "apps/add-flights/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/apps/add-flights"
+      ],
+      "options": {
+        "jestConfig": "apps/add-flights/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

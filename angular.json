@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "projects": {
+    "add-flights": "apps/add-flights",
+    "add-flights-e2e": "apps/add-flights-e2e",
+    "feature-add-flight": "libs/feature-add-flight"
+  }
+}
